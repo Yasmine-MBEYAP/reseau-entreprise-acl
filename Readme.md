@@ -35,18 +35,33 @@ Une ACL étendue nommée `BLOC_COM_SERVEUR` est appliquée en sortie (`out`) sur
 - **`PC-Admin1` -> `Serveur-Central` (`192.168.30.50`)** : `ping` réussi (`0%` de perte).
 - **`PC-Com1` -> `Serveur-Central` (`192.168.30.50`)** : bloqué (`Destination host unreachable`, `100%` de perte).
 
+## Règles de Sécurité (ACL Étendue)
+
+Une ACL étendue nommée `BLOC_COM_SERVEUR` est appliquée en sortie (`out`) sur `GigabitEthernet0/2` (réseau Informatique) et sur `GigabitEthernet0/0` (réseau Administratif) de `R1-Entreprise` :
+
+1. Bloque le trafic IP du réseau Commercial (`192.168.20.0/24`) vers le réseau Informatique (`192.168.30.0/24`).
+2. Bloque le trafic IP du réseau Commercial (`192.168.20.0/24`) vers l'imprimante administrative `Printer-Admin` (`192.168.10.20`).
+3. Autorise le reste du trafic (`permit ip any any`).
+
+## Tests de Validation
+
+- **`PC-Admin1` (`192.168.10.10`) -> `Printer-Admin` (`192.168.10.20`)** : `ping` réussi (`0%` de perte).
+- **`PC-Admin1` (`192.168.10.10`) -> `Serveur-Central` (`192.168.30.50`)** : `ping` réussi (`0%` de perte).
+- **`PC-Com1` (`192.168.20.10`) -> `Serveur-Central` (`192.168.30.50`)** : bloqué (`Destination host unreachable`, `100%` de perte).
+- **`PC-Com1` (`192.168.20.10`) -> `Printer-Admin` (`192.168.10.20`)** : bloqué (`Destination host unreachable` ou `Request timed out`, `100%` de perte).
+
 ## Fichiers du Projet
 
 - Fichier Packet Tracer (`.pkt`) de la topologie configurée et sauvegardée.
 - Captures d'écran de la topologie et des tests `ping` de validation.
 
-## Aperçu de la Topologie
+## Aperçu 
 
 - [Topologie Cisco Packet Tracer][def]
 
 [def]: Topologie.png
-- [Topologie Cisco Packet Tracer][def2]
-- [Topologie Cisco Packet Tracer][def3]
+- [PC-Admin1 Cisco Packet Tracer][def2]
+- [PC-COM1 Cisco Packet Tracer][def3]
 
 [def2]: PC-Admin1.png
 [def3]: PC-COM1.png
