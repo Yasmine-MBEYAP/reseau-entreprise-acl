@@ -39,3 +39,14 @@ Une ACL étendue nommée `BLOC_COM_SERVEUR` est appliquée en sortie (`out`) sur
 
 - Fichier Packet Tracer (`.pkt`) de la topologie configurée et sauvegardée.
 - Captures d'écran de la topologie et des tests `ping` de validation.
+
+## Aperçu de la Topologie
+
+- [Topologie Cisco Packet Tracer][def]
+
+[def]: Topologie.png
+- [Topologie Cisco Packet Tracer][def2]
+- [Topologie Cisco Packet Tracer][def3]
+
+[def2]: PC-Admin1.png
+[def3]: PC-COM1.png
